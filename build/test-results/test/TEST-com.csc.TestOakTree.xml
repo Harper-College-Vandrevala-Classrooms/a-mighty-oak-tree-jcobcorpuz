@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.csc.TestOakTree" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-12-09T04:33:13" hostname="WIN-VE0J3PDRJ34" time="0.02">
+  <properties/>
+  <testcase name="testAddLeft()" classname="com.csc.TestOakTree" time="0.013"/>
+  <testcase name="testAddRoot()" classname="com.csc.TestOakTree" time="0.001"/>
+  <testcase name="testAddRight()" classname="com.csc.TestOakTree" time="0.001"/>
+  <testcase name="testRetrieve()" classname="com.csc.TestOakTree" time="0.0"/>
+  <testcase name="itWorks()" classname="com.csc.TestOakTree" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
