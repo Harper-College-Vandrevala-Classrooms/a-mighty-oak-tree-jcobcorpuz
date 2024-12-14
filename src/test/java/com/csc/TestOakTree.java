@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 
 public class TestOakTree {
 
-  OakTree tree;
+  OakTree<OakTree.Squirrel> squirrelTree;
 
   @BeforeEach
   void setUp() {
-    tree = new OakTree();
+    squirrelTree = new OakTree<>();
   }
 
   @Test
@@ -21,48 +21,62 @@ public class TestOakTree {
 
   @Test
   void testAddRoot(){
-    OakTree.Squirrel cheeks = tree.new Squirrel("Cheeks");
-    tree.setRoot(cheeks);
+    OakTree.Squirrel cheeks = squirrelTree.new Squirrel("Cheeks");
+    squirrelTree.setRoot(cheeks);
 
-    assertEquals("Cheeks", tree.getRoot().getData().getName());
+    assertEquals("Cheeks", squirrelTree.getRoot().getData().getName());
   }
 
   @Test
   void testAddLeft(){
-    OakTree.Squirrel cheeks = tree.new Squirrel("Cheeks");
-    OakTree.Squirrel squeaks = tree.new Squirrel("Squeaks");
+    OakTree.Squirrel cheeks = squirrelTree.new Squirrel("Cheeks");
+    OakTree.Squirrel squeaks = squirrelTree.new Squirrel("Squeaks");
 
-    tree.setRoot(cheeks);
-    OakTree.Node rootNode = tree.getRoot();
-    tree.setLeft(rootNode, squeaks);
+    squirrelTree.setRoot(cheeks);
+    OakTree<OakTree.Squirrel>.Node rootNode = squirrelTree.getRoot();
+    squirrelTree.setLeft(rootNode, squeaks);
 
     assertEquals("Squeaks", rootNode.getLeft().getData().getName());
   }
 
   @Test
   void testAddRight(){
-    OakTree.Squirrel cheeks = tree.new Squirrel("Cheeks");
-    OakTree.Squirrel fluffybutt = tree.new Squirrel("Mr. Fluffy Butt");
+    OakTree.Squirrel cheeks = squirrelTree.new Squirrel("Cheeks");
+    OakTree.Squirrel fluffybutt = squirrelTree.new Squirrel("Mr. Fluffy Butt");
 
-    tree.setRoot(cheeks);
-    OakTree.Node rootNode = tree.getRoot();
-    tree.setRight(rootNode, fluffybutt);
+    squirrelTree.setRoot(cheeks);
+    OakTree<OakTree.Squirrel>.Node rootNode = squirrelTree.getRoot();
+    squirrelTree.setRight(rootNode, fluffybutt);
 
     assertEquals("Mr. Fluffy Butt", rootNode.getRight().getData().getName());
   }
 
   @Test
   void testRetrieve(){
-    OakTree.Squirrel cheeks = tree.new Squirrel("Cheeks");
-    OakTree.Squirrel squeaks = tree.new Squirrel("Squeaks");
-    OakTree.Squirrel fluffybutt = tree.new Squirrel("Mr. Fluffy Butt");
+    OakTree.Squirrel cheeks = squirrelTree.new Squirrel("Cheeks");
+    OakTree.Squirrel squeaks = squirrelTree.new Squirrel("Squeaks");
+    OakTree.Squirrel fluffybutt = squirrelTree.new Squirrel("Mr. Fluffy Butt");
 
-    tree.setRoot(cheeks);
-    OakTree.Node rootNode = tree.getRoot();
-    tree.setLeft(rootNode, squeaks);
-    tree.setRight(rootNode, fluffybutt);
+    squirrelTree.setRoot(cheeks);
+    OakTree<OakTree.Squirrel>.Node rootNode = squirrelTree.getRoot();
+    squirrelTree.setLeft(rootNode, squeaks);
+    squirrelTree.setRight(rootNode, fluffybutt);
 
     assertEquals("Squeaks", rootNode.getLeft().getData().getName());
     assertEquals("Mr. Fluffy Butt", rootNode.getRight().getData().getName());
+  }
+
+  @Test
+  void testGenericIntegerTree(){
+    OakTree<Integer> intTree = new OakTree<>();
+    intTree.setRoot(10);
+    OakTree<Integer>.Node rootNode = intTree.getRoot();
+
+    intTree.setLeft(rootNode, 5);
+    intTree.setRight(rootNode, 15);
+
+    assertEquals(10, rootNode.getData());
+    assertEquals(5,rootNode.getLeft().getData());
+    assertEquals(15, rootNode.getRight().getData());
   }
 }
